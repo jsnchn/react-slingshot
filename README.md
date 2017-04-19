@@ -1,5 +1,4 @@
-[Docs](https://github.com/coryhouse/react-slingshot)
-[FAQ](https://github.com/coryhouse/react-slingshot/blob/master/docs/FAQ.md)
+[Docs](https://github.com/coryhouse/react-slingshot) | [FAQ](https://github.com/coryhouse/react-slingshot/blob/master/docs/FAQ.md)
 
 Do these:
 
