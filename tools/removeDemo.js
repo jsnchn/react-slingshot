@@ -7,14 +7,14 @@ import {chalkSuccess} from './chalkConfig';
 
 const pathsToRemove = [
   './src/actions/*',
-  './src/utils',
+  './src/utils/*',
   './src/components/*',
   './src/constants/*',
   './src/containers/*',
-  './src/images',
+  './src/images/*',
   './src/reducers/*',
   './src/store/store.spec.js',
-  './src/styles',
+  './src/styles/*',
   './src/routes.js',
   './src/index.js',
   './tools/removeDemo.js'
@@ -23,7 +23,7 @@ const pathsToRemove = [
 const filesToCreate = [
   {
     path: './src/components/emptyTest.spec.js',
-    content: '// Must have at least one test file in this directory or Mocha will throw an error.'
+    content: '// Must have at least one test file in this directory or Jest will throw an error.'
   },
   {
     path: './src/index.js',

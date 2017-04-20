@@ -4,6 +4,8 @@ import {Link} from 'react-router';
 const HomePage = () => {
   return (
     <div>
+      <img src={require('../../src/images/img_ci_12.gif')} />
+
       <h1>React Slingshot</h1>
 
       <h2>Get Started</h2>
