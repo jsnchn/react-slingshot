@@ -17,14 +17,11 @@ const pathsToRemove = [
   './src/styles/*',
   './src/routes.js',
   './src/index.js',
-  './tools/removeDemo.js'
+  './tools/removeDemo.js',
+  './tools/testCi.js'
 ];
 
 const filesToCreate = [
-  {
-    path: './src/components/emptyTest.spec.js',
-    content: '// Must have at least one test file in this directory or Jest will throw an error.'
-  },
   {
     path: './src/index.js',
     content: '// Set up your application entry point here...'
