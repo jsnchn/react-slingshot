@@ -4,3 +4,4 @@
 --require test/setup.js
 --require test/babelhook.js
 --require test/css-null.js
+--watch

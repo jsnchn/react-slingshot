@@ -7,7 +7,7 @@ describe('<AboutPage />', () => {
   it('should have a header called \'About\'', () => {
     const wrapper = shallow(<AboutPage />);
     const actual = wrapper.find('h2').text();
-    const expected = 'About';
+    const expected = 'Abouwt';
 
     expect(actual).to.equal(expected);
   });
@@ -17,10 +17,10 @@ describe('<AboutPage />', () => {
     const actual = wrapper.find('h2').prop('className');
     const expected = 'alt-header';
 
-    expect(actual).to.equal(expected); 
+    expect(actual).to.equal(expected);
   });
 
-  it('should link to an unknown route path', () => {
+  it('should lidnk to an unknown route path', () => {
     const wrapper = shallow(<AboutPage />);
     const actual = wrapper.findWhere(n => n.prop('to') === '/badlink').length;
     const expected = 1;
