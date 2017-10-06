@@ -20,7 +20,9 @@
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint",
     "build": "babel-node tools/build.js && npm run open:dist",
-    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "test": "mocha --compilers js:babel-core/register --reporter mochawesome --reporter-options reportDir=test/reporter,reportFilename=report,quiet=true --require test/setup.js ./test/*.test.js",
+    "tdd": "npm test -- -w"
   },
   "author": "Cory House",
   "license": "MIT",
@@ -164,9 +166,7 @@
     "env": {
       "es6": true,
       "browser": true,
-      "node": true,
-      "jquery": true,
-      "jest": true
+      "node": true
     },
     "rules": {
       "quotes": 0,
