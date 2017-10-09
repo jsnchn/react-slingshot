@@ -26,10 +26,10 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-#dist folder
+# dist folder
 dist
 
-#tests
+# tests
 test/runner
 
 # IDEA/Webstorm project files
