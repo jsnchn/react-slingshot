@@ -21,9 +21,9 @@
     "prebuild": "npm run clean-dist && npm run lint",
     "build": "babel-node tools/build.js && npm run open:dist",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
-    "test": "npm-run-all -c --parallel mocha:start test:open",
+    "test": "npm-run-all -c --parallel mocha:watch test:open",
     "test:open": "browser-sync start --server --port 3002 --ss ./test/runner -f ./test/runner/* --index ./test/runner/runner.html",
-    "mocha:start": "mocha src/**/*.test.js"
+    "mocha:watch": "mocha --watch src/**/*.test.js"
   },
   "author": "Cory House",
   "license": "MIT",

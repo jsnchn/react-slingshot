@@ -7,7 +7,7 @@ describe('<AboutPage />', () => {
   it('should have a header called \'About\'', () => {
     const wrapper = shallow(<AboutPage />);
     const actual = wrapper.find('h2').text();
-    const expected = 'Abouwt';
+    const expected = 'About';
 
     expect(actual).to.equal(expected);
   });

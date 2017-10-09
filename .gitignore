@@ -29,6 +29,9 @@ node_modules
 #dist folder
 dist
 
+#tests
+test/runner
+
 # IDEA/Webstorm project files
 .idea
 *.iml
