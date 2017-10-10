@@ -11,22 +11,19 @@
     "remove-demo": "babel-node tools/removeDemo.js",
     "start-message": "babel-node tools/startMessage.js",
     "prestart": "npm-run-all --parallel start-message",
-    "start": "npm-run-all --parallel test:watch open:src lint:watch",
+    "start": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "npm run lint -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run clean-dist && npm run lint && npm run test",
+    "prebuild": "npm run clean-dist && npm run lint",
     "build": "babel-node tools/build.js && npm run open:dist",
-    "test": "jest || true",
-    "test:CI": "babel-node tools/testCi.js",
-    "test:cover": "npm run test -- --coverage || true",
-    "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
-    "test:watch": "npm run test -- --watch || true",
-    "open:cover": "npm run test:cover && opn ./coverage/lcov-report/index.html",
-    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "test": "npm-run-all -c --parallel mocha:watch test:open",
+    "test:open": "browser-sync start --server --port 3002 --ss ./test/runner -f ./test/runner/* --index ./test/runner/runner.html",
+    "mocha:watch": "mocha --watch src/**/*.test.js"
   },
   "author": "Cory House",
   "license": "MIT",
@@ -45,7 +42,6 @@
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
-    "babel-jest": "20.0.3",
     "babel-loader": "7.1.1",
     "babel-plugin-transform-react-constant-elements": "6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.6",
@@ -55,6 +51,7 @@
     "babel-preset-react-hmre": "1.1.1",
     "babel-preset-stage-1": "6.24.1",
     "browser-sync": "2.18.12",
+    "chai": "4.1.2",
     "chalk": "2.0.1",
     "connect-history-api-fallback": "1.3.0",
     "coveralls": "2.13.1",
@@ -68,22 +65,26 @@
     "file-loader": "0.11.2",
     "html-webpack-plugin": "2.29.0",
     "identity-obj-proxy": "3.0.0",
-    "jest": "20.0.4",
-    "jest-cli": "20.0.4",
+    "jsdom": "9.12.0",
     "json-loader": "0.5.4",
-    "mockdate": "2.0.1",
+    "mocha": "4.0.0",
+    "mochawesome": "2.3.1",
+    "nock": "9.0.22",
     "node-sass": "4.5.3",
     "npm-run-all": "4.0.2",
+    "object-assign": "4.1.0",
     "opn-cli": "3.1.0",
     "postcss-loader": "1.2.1",
     "prompt": "1.0.0",
     "prop-types": "15.5.10",
     "react-hot-loader": "3.0.0-beta.6",
-    "react-test-renderer": "15.5.4",
+    "react-test-renderer": "16.0.0",
     "redux-immutable-state-invariant": "2.0.0",
+    "redux-mock-store": "1.3.0",
     "replace": "0.3.0",
     "rimraf": "2.6.1",
     "sass-loader": "6.0.6",
+    "sinon": "4.0.1",
     "style-loader": "0.18.2",
     "url-loader": "0.5.9",
     "webpack": "3.1.0",
@@ -110,12 +111,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/coryhouse/react-slingshot"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|scss)$": "identity-obj-proxy",
-      "^.+\\.(gif|ttf|eot|svg|woff|woff2|ico)$": "<rootDir>/tools/fileMock.js"
-    }
   },
   "babel": {
     "presets": [
@@ -174,9 +169,7 @@
     "env": {
       "es6": true,
       "browser": true,
-      "node": true,
-      "jquery": true,
-      "jest": true
+      "node": true
     },
     "rules": {
       "quotes": 0,
